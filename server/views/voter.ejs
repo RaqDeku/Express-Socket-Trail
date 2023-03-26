@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js" integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Welcome to Voter Page</h1>
+    <div id="president">
+        <h4>President</h4>
+        <button id="Kofi">Kofi</button>
+        <button id="Ama">Ama</button>
+    </div>
+
+    <script>
+        const socket = io('http://localhost:3000/voter')
+        socket.on('connection')
+
+        let candidate;
+        candidate = document.getElementById('Kofi')
+        .addEventListener('click', (event) => {
+            event.preventDefault()
+            if (event) {
+                socket.emit('vote', 'Kofi')
+            }
+        })
+
+        candidate = document.getElementById('Ama')
+        .addEventListener('click', (event) => {
+            event.preventDefault()
+            if (event) {
+                socket.emit('vote', 'Ama')
+            }
+        })
+        
+    </script>
+    
+</body>
+</html>

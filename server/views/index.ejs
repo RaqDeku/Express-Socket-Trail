@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js" integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Welcome to the Admin Page</h1>
+    <h3>President Results</h3>
+    <p id="Kofi">Kofi</p>
+    <p id="Ama">Ama</p>
+    <p id="msg"></p>
+
+    <script>
+        const socket = io('http://localhost:3000/admin')
+        socket.on('connection')
+
+        socket.on('results', (candidate) => {
+            document.getElementById('msg')
+            .innerHTML = JSON.stringify(candidate)
+            console.log(candidate)
+        })
+    </script>
+</body>
+</html>
